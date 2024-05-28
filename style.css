@@ -178,6 +178,7 @@ img {
     font-size: 30px;
 }
 
+
 @media (min-width: 992px) {
     body {
         background-color: var(--color-base2);
