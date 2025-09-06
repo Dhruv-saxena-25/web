@@ -26,25 +26,14 @@ a {
     transition: all 0.4s ease;
 }
 
-a:hover {
-    color: var(--color-brand);
-}
+a:hover { color: var(--color-brand); }
 
-.home img {
-    border: 8px solid var(--color-brand);
-}
+.home img { border: 8px solid var(--color-brand); }
 
-img {
-    width: 100%;
-}
+img { width: 100%; }
 
-.bg-base {
-    background-color: var(--color-base);
-}
-
-.text-brand {
-    color: var(--color-brand);
-}
+.bg-base { background-color: var(--color-base); }
+.text-brand { color: var(--color-brand); }
 
 .full-height {
     min-height: 100vh;
@@ -56,13 +45,8 @@ img {
     padding-bottom: 80px;
 }
 
-.shadow-effect {
-    transition: all 0.5s;
-}
-
-.shadow-effect:hover {
-    box-shadow: -6px 6px 0 0 var(--color-brand);
-}
+.shadow-effect { transition: all 0.5s; }
+.shadow-effect:hover { box-shadow: -6px 6px 0 0 var(--color-brand); }
 
 .iconbox {
     width: 60px;
@@ -76,9 +60,7 @@ img {
 }
 
 /* NAVBAR */
-.navbar {
-    background-color: var(--color-base);
-}
+.navbar { background-color: var(--color-base); }
 
 .navbar .nav-link {
     font-weight: 700;
@@ -87,16 +69,10 @@ img {
     transition: 0.5s all ease 0s;
 }
 
-.navbar .nav-link.active {
-    color: var(--color-brand);
-}
+.navbar .nav-link.active,
+.navbar .nav-link:hover { color: var(--color-brand); }
 
-.navbar .nav-link:hover{
-    color: var(--color-brand);
-    transition: 0.5s all ease 0s;
-}
-
-/* BTN */
+/* Buttons (shared) */
 .btn-hover {
     display: inline-block;
     width: 65%;
@@ -112,26 +88,18 @@ img {
     border-radius: 3px;
     background: var(--color-base);
     line-height: 1.15;
-    -webkit-transition: background-color 2s linear;
-    -moz-transition: background-color 2s linear;
-    -o-transition: background-color 2s linear;
     transition: background-color 2s linear;
 }
 
-.btn-hover:hover{
-    cursor: pointer;
-    color: #000000;
-    background-color: var(--color-brand);
-}
+.btn-hover:hover { color: #000000; background-color: var(--color-brand); }
 
-/* LINK-CUSTOM */
+/* link-custom underline effect */
 .link-custom {
     font-weight: 700;
     color: var(--color-brand);
     position: relative;
     font-size: large;
 }
-
 .link-custom::after {
     content: "";
     width: 0%;
@@ -142,26 +110,14 @@ img {
     top: 110%;
     transition: all 0.4s;
 }
+.link-custom:hover::after { width: 100%; }
 
-.link-custom:hover::after {
-    width: 100%;
-}
+/* Card image hover */
+.card-custom .card-custom-image { overflow: hidden; }
+.card-custom .card-custom-image img { transition: all 0.4s ease; }
+.card-custom:hover .card-custom-image img { transform: scale(1.1); }
 
-/* CARD */
-
-.card-custom .card-custom-image {
-    overflow: hidden;
-}
-
-.card-custom .card-custom-image img {
-    transition: all 0.4s ease;
-}
-
-.card-custom:hover .card-custom-image img {
-    transform: scale(1.1);
-}
-
-/* SOCIAL ICONS */
+/* Social icons */
 .social-icons a {
     width: 40px;
     height: 40px;
@@ -172,62 +128,92 @@ img {
     border-radius: 100px;
     font-size: 24px;
 }
-
-.social-icons a:hover {
-    background: transparent;
-    font-size: 30px;
-}
-
+.social-icons a:hover { background: transparent; font-size: 30px; }
 
 @media (min-width: 992px) {
-    body {
-        background-color: var(--color-base2);
-        background-size: auto;
-        background-position: center;
-    }
     .navbar {
         min-height: 100vh;
         width: var(--sidebar-width);
-        background-color: var(--color-base);
-        background-size: auto;
-        background-position: center;
     }
-
-    .navbar-brand img {
-        border: 8px solid var(--color-brand);
-    }
-    
-    #content-wrapper {
-        padding-left: var(--sidebar-width);
-    }
+    .navbar-brand img { border: 8px solid var(--color-brand); }
+    #content-wrapper { padding-left: var(--sidebar-width); }
 
     .btn-hover {
-        display: inline-block;
         width: 25%;
-        font-size: 16px;
-        font-weight: 600;
-        color: var(--color-text);
-        margin: 20px;
         padding: 12px 24px;
         height: 40px;
-        text-align: center;
-        border: 0;
-        border-radius: 3px;
-        background: var(--color-base);
-        line-height: 1.15;
-        -webkit-transition: background-color 2s linear;
-        -moz-transition: background-color 2s linear;
-        -o-transition: background-color 2s linear;
-        transition: background-color 2s linear;
-    }
-    
-    .btn-hover:hover{
-        cursor: pointer;
-        color: #000000;
-        background-color: var(--color-brand);
     }
 
-    .form{
-        border-right: 1px solid var(--color-brand);
-    }
+    .form { border-right: 1px solid var(--color-brand); }
 }
+
+/* =========================================================
+   Enhancements: equal heights, CTA layout, section show-more
+   ========================================================= */
+
+/* Equal height for skill & project cards (per row) */
+.row.gy-4 > [class*="col-"] { display: flex; }  /* each col is a flex container */
+.skills, .card-custom {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+/* Make project card content fill and push links to bottom */
+.card-custom-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.card-custom-content p { flex-grow: 1; }
+
+/* CTA buttons layout (home) */
+.cta-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.cta-buttons .btn-hover {
+  width: auto;
+  min-width: 260px;
+  white-space: nowrap;
+  height: auto;
+  line-height: 1;
+  padding: 0.85rem 1.4rem;
+  margin: 0;
+}
+@media (max-width: 576px) {
+  .cta-buttons .btn-hover {
+    flex: 1 1 100%;
+    min-width: 0;
+    white-space: normal;
+  }
+}
+
+/* Section Show More button (shared) */
+.project-section .controls,
+.skills-section .controls { text-align: center; }
+.show-more-btn { margin-top: 1rem; display: inline-block; }
+
+/* Per-card Read More link */
+.read-more-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: .25rem;
+  font: inherit;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.read-more-btn.linky { color: var(--color-brand); }
+
+/* ===================== Projects visibility ===================== */
+/* Default: hide all project cards; show first 3. When expanded show all. */
+.project-section .project-list > [class*="col-"] { display: none; }
+.project-section .project-list > [class*="col-"]:nth-child(-n+3) { display: flex; }
+.project-section.expanded .project-list > [class*="col-"] { display: flex; }
+
+/* ===================== Skills visibility ===================== */
+/* Default: hide skills after the first 6. When expanded show all. */
+.skills-section .skills-list > [class*="col-"] { display: none; }
+.skills-section .skills-list > [class*="col-"]:nth-child(-n+6) { display: flex; }
+.skills-section.expanded .skills-list > [class*="col-"] { display: flex; }
